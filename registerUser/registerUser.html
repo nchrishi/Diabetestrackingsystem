@@ -1,0 +1,49 @@
+<template>
+    <lightning-card title="Register">
+      <div class="slds-p-around_medium">
+        <lightning-input label="Full Name" required data-id="fullName" value={fullName} onchange={handleInputChange}></lightning-input>
+        <lightning-input label="Email" required type="email" data-id="email" value={email} onchange={handleInputChange}></lightning-input>
+        <lightning-input label="Phone Number" required type="tel" data-id="phone" value={phone} onchange={handleInputChange}></lightning-input>
+        <lightning-input label="Date of Birth" required type="date" data-id="dob" value={dob} onchange={handleInputChange}></lightning-input>
+        <lightning-input label="Username" required data-id="username" value={username} onchange={handleInputChange}></lightning-input>
+        <lightning-input label="Password" type="password" onchange={handlePasswordChange} data-id="password" value={password} required></lightning-input>
+
+        <p>{passwordStrengthMessage}</p>
+        
+        <lightning-combobox label="Security Question 1" options={securityQuestions} onchange={handleSecurityQuestion1} data-id="securityQuestion1" value={securityQuestion1} required></lightning-combobox>
+        <lightning-input label="Answer" type="text" data-id="answer1" value={answer1} onchange={handleInputChange} required></lightning-input>
+        
+        <lightning-combobox label="Security Question 2" options={securityQuestions} onchange={handleSecurityQuestion2} data-id="securityQuestion2" value={securityQuestion2} required></lightning-combobox>
+        <lightning-input label="Answer" type="text" data-id="answer2" value={answer2} onchange={handleInputChange} required></lightning-input>
+        
+        <lightning-combobox label="Security Question 3" options={securityQuestions} onchange={handleSecurityQuestion3} data-id="securityQuestion3" value={securityQuestion3}></lightning-combobox>
+        <lightning-input label="Answer" type="text" data-id="answer3" value={answer3} onchange={handleInputChange}></lightning-input>
+
+        <lightning-input type="text" label="Custom Security Question 1" data-id="customSecurityQuestion1" onchange={handleInputChange}></lightning-input>
+        <lightning-input type="text" label="Custom Security Question 1 Answer" data-id="customAnswer1" onchange={handleInputChange}></lightning-input>
+
+        <lightning-input type="text" label="Custom Security Question 2" data-id="customSecurityQuestion2" onchange={handleInputChange}></lightning-input>
+        <lightning-input type="text" label="Custom Security Question 2 Answer" data-id="customAnswer2" onchange={handleInputChange}></lightning-input>
+
+        <lightning-input type="text" label="Custom Security Question 3" data-id="customSecurityQuestion3" onchange={handleInputChange}></lightning-input>
+        <lightning-input type="text" label="Custom Security Question 3 Answer" data-id="customAnswer3" onchange={handleInputChange}></lightning-input>
+
+
+        <div class="image-grid">
+          <lightning-layout multiple-rows="true">
+            <template for:each={images} for:item="image" for:index="index">
+              <lightning-layout-item key={image.id} size="4" small-device-size="4" medium-device-size="4" large-device-size="4">
+                <div class="image-container">
+                  <img src={image.url} alt={image.altText} data-id={image.id} onclick={handleImageSelection} class="grid-image"/>
+                </div>
+              </lightning-layout-item>
+            </template>
+          </lightning-layout>
+        </div>
+        
+      
+        
+        <lightning-button label="Register" onclick={register} variant="brand" class="slds-m-top_medium"></lightning-button>
+      </div>
+    </lightning-card>
+</template>

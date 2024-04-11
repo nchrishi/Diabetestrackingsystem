@@ -1,0 +1,42 @@
+<template>
+    <lightning-card title="Diabetes Data Entry">
+        <div class="login-form slds-p-around_medium">
+            <lightning-input type="email" label="Email" data-id="email" value={email} onchange={handleEmailChange} required></lightning-input>
+            <lightning-input type="password" label="Password" data-id="password" value={password} onchange={handlePasswordChange} required></lightning-input>
+
+            <div class="form-group">
+                <label for="security-question-1"></label>
+                <lightning-combobox name="securityQuestion1" label="Security Question 1" value={securityQuestion1} placeholder="Select a question" options={securityQuestions} onchange={handleQuestion1Change} required></lightning-combobox>
+                <lightning-input type="text" label="Answer 1" placeholder="Answer 1" value={securityAnswer1} onchange={handleAnswer1Change} required></lightning-input>
+            </div>
+
+            <div class="form-group">
+                <label for="security-question-2"></label>
+                <lightning-combobox name="securityQuestion2" label="Security Question 2" value={securityQuestion2} placeholder="Select a question" options={securityQuestions} onchange={handleQuestion2Change} required></lightning-combobox>
+                <lightning-input type="text" label="Answer 2" placeholder="Answer 2" value={securityAnswer2} onchange={handleAnswer2Change} required></lightning-input>
+            </div>
+
+            <!-- Add image selection -->
+            <div class="image-selection">
+                <p>Select your image:</p>
+                <div class="image-grid">
+                    <lightning-layout multiple-rows="true">
+                        <template for:each={images} for:item="image" for:index="index">
+                            <lightning-layout-item key={image.id} size="1" small-device-size="1" medium-device-size="1" large-device-size="1">
+                                <div class="image-container">
+                                    <img src={image.url} alt={image.altText} data-id={image.id} onclick={handleImageClick} class={image.computedClass} />
+                                </div>
+                            </lightning-layout-item>
+                        </template>
+                    </lightning-layout>
+                </div>
+            </div>
+            <lightning-button label="Log In" onclick={handleLogin}></lightning-button>
+            <a href="#" onclick={showResetPasswordForm}>Forgot Password?</a>
+            <template if:true={resetPasswordFormVisible}>
+                <lightning-input type="email" label="Reset Password Email" data-id="resetEmail" value={resetEmail} onchange={handleResetEmailChange}></lightning-input>
+                <lightning-button label="Send Temporary Password" onclick={handleForgotPassword}></lightning-button>
+            </template>
+        </div>
+    </lightning-card>
+</template>

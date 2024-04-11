@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Diabetes Data Entry" icon-name="standard:record">
+        <div class="slds-m-around_medium">
+            <lightning-input label="Entry Date" type="date" value={entryDate} onchange={handleEntryDateChange} required ></lightning-input>
+            <lightning-input label="Time Taking Test (AM)" type="time" value={timeTakingTestAM} onchange={handleTimeTakingTestAMChange} required ></lightning-input>
+            <lightning-input label="Blood Sugar Level (AM)" type="number" value={bloodSugarLevelAM} onchange={handleBloodSugarLevelAMChange} required ></lightning-input>
+            <lightning-input label="Breakfast Menu" value={breakfastMenu} onchange={handleBreakfastMenuChange} required ></lightning-input>
+            <lightning-input label="Lunch Menu" value={lunchMenu} onchange={handleLunchMenuChange} required ></lightning-input>
+            <lightning-input label="Dinner Menu" value={dinnerMenu} onchange={handleDinnerMenuChange} required ></lightning-input>
+            <lightning-input label="Time Taking Test (PM)" type="time" value={timeTakingTestPM} onchange={handleTimeTakingTestPMChange} required ></lightning-input>
+            <lightning-input label="Blood Sugar Level (PM)" type="number" value={bloodSugarLevelPM} onchange={handleBloodSugarLevelPMChange} required ></lightning-input>
+            <lightning-button label="Save" onclick={handleSave} class="slds-m-top_medium" ></lightning-button>
+        </div>
+    </lightning-card>
+</template>
